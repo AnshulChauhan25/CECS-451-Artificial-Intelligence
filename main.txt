@@ -1,0 +1,95 @@
+#--------------------------------------
+# Constructs a graph data structure
+# (c) 2021 Anshul & James 
+# Date: 7/11/2021
+# Name:James Rozsypal & Anshul Chauhan
+# Student ID: 015668339 & 016246735
+# Email: james.rozsypal@student.csulb.edu & anshul.chauhan@student.csulb.edu
+#--------------------------------------
+#First we define our Graph class
+class Graph(object):
+#Insatnce properties of object is referred by using self.
+  def __init__(self):
+      self.vert_dict = {}
+      self.num_vertices = 0
+
+  ##Creating a new Vertex object    
+  def add_vertex(self, node): 
+      new_v = Vertex(node)
+#Adding a new vertex in dictionary where key is a node label and the value is the vertex object
+      self.vert_dict[node] = new_v
+      self.num_vertices = self.num_vertices + 1
+
+  def get_vertex(self, node):
+  #Add it if it is not present in the dictionary otherwise return nothing
+      if node in self.vert_dict:
+          return self.vert_dict[node]
+      else:
+          return None
+#The function is uded to add the neighbours from edge and to edge.
+  def add_edge(self, from_edge, to_edge, weight = 1):
+      if from_edge not in self.vert_dict:
+          self.add_vertex(from_edge)
+      if to_edge not in self.vert_dict:
+          self.add_vertex(to_edge)
+      self.vert_dict[from_edge].add_neighbor(self.vert_dict[to_edge], weight)
+
+  #It returns array for all the key objects.
+  def get_vertices(self):
+      return self.vert_dict.keys()
+  
+  #basically we are using v as a type of string key that refers to the actual object of vertex
+  def graph_summary(self):
+      for v in self.vert_dict.values():
+          for w in v.get_connections():
+              v_id = v.get_id()
+ 
+              w_id = w.get_id()
+#Print
+              print(v_id, w_id, v.get_weight(w))
+
+#Defining the class vertex                                     
+class Vertex:
+  def __init__(self, node):   
+      self.id = node
+      self.adjacent ={}
+
+#This will return the adjacent node      
+  def get_connections(self):
+      return self.adjacent.keys()
+
+#If the object isn't in the dictionary this will append it.
+  def add_neighbor(self, neighbor, weight):
+      self.adjacent[neighbor] = weight
+
+  def get_id(self):
+      return self.id
+  def get_weight(self, neighbor):
+      return self.adjacent[neighbor]
+
+#main class according to the requirement.
+class main():
+
+    g = Graph()
+    g.add_vertex('a')
+    g.add_vertex('b')
+    g.add_vertex('c')
+    g.add_vertex('d')
+    g.add_vertex('s')
+
+    g.add_edge('a', 'b', 1)
+    g.add_edge('a', 'c', 2)
+    g.add_edge('b', 'd', 4)
+    g.add_edge('c', 'a', 3)
+    g.add_edge('c', 'b', 9)
+    g.add_edge('c', 'd', 2)
+    g.add_edge('d', 's', 7)
+    g.add_edge('d', 'b', 6)
+    g.add_edge('s', 'a', 10)
+    g.add_edge('s', 'c', 5)
+    g.graph_summary()
+    
+    
+
+    
+    
