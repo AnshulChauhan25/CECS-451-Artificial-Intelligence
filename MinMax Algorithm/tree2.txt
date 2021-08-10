@@ -1,0 +1,16 @@
+max, , A=0,,,
+min, A, B=0, C=0
+max, B, D=0, E=0
+max, C, F=0, G=0
+min, D, H=0, I=0
+min, E, J=0, K=0
+min, F, L=0, M=0
+min, G, N=0, O=0
+max, H, H1=10, H2=5
+max, I, I1=7, I2=11
+max, J, J1=12, J2=8
+max, K, K1=9, K2=8
+max, L, L1=5, L2=12
+max, M, M1=11, M2=12
+max, N, N1=9, N2=8
+max, O, O1=7, O2=10

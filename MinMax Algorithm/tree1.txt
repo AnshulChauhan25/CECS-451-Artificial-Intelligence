@@ -1,0 +1,5 @@
+max, , A=0
+min, A, B=0, C=0, D=0
+max, B, B1=3, B2=12, B3=8
+max, C, C1=2, C2=4, C3=6
+max, D, D1=14, D2=5, D3=2
